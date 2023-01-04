@@ -1,15 +1,100 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script src="main.js"></script>
+    <meta charset="utf-8" />
+    <title>Current Time & Date</title>
   </head>
   <body>
     <h1>Hello World!</h1>
-    <hr/>
+    <hr />
     <div id="display-element"></div>
     <button onclick="displayDate()">Click Me</button>
-    <hr/>
+    <hr />
+    <h3>JavaScript Fundamentals Practice:</h3>
+    <div>
+      <form id="numberToString">
+        <label for="numInput">Converting Numbers To Strings:</label><br />
+        <input
+          placeholder="Pick a Number!"
+          id="numSTGInput"
+          name="numSTGInput"
+          type="number"
+        />
+        <button type="submit">Convert To String!</button>
+        <p id="numToStringDisplay"></p>
+      </form>
+    </div>
+    <br />
+    <div>
+      <form id="stringToNumber">
+        <label for="stringInput"
+          >Converting Strings to Numbers: <br />(Letters will be counted as NaN:
+          Not a Number)</label
+        ><br />
+        <input
+          placeholder="Type a Number! (ex: 12)"
+          id="stringNumInput"
+          name="stringNumInput"
+          type="text"
+        />
+        <button type="submit">Convert To Number!</button>
+        <p id="stringtoNumDisplay"></p>
+      </form>
+    </div>
+    <br />
+    <div>
+      <form id="dataTypes">
+        <label for="dataTypeInput"> Data Types: Check The Dom! </label>
+        <br />
+        <input
+          placeholder="Type A Number or A Word"
+          id="dataTypeInput"
+          name="dataTypeInput"
+          type="text"
+        />
+        <button type="submit">Check The Data Type!</button>
+        <p id="dataTypeDisplay"></p>
+      </form>
+    </div>
+    <br />
+    <div>
+      <form id="addition">
+        <label for="Add">Add Two Numbers Together:</label><br />
+        <input
+          placeholder="Pick a Number:"
+          id="numAInput"
+          name="numAInput"
+          type="number"
+        />
+        <input
+          placeholder="Pick a Number:"
+          id="numBInput"
+          name="numBInput"
+          type="number"
+        />
+        <button type="submit">Add The Numbers</button>
+        <p id="sum"></p>
+      </form>
+    </div>
+    <div>
+      <form id="trueOrFalseValue">
+        <p>
+          Logical Operators Practice: (Check Yes or Leave Blank for No)
+          <br />
+          <br />
+          Are You Ready For JS211?
+        </p>
+        <input id="yesReady" name="yesReady" type="checkbox" />
+        <label for="yesReady">Yes</label>
+        <br />
+        <p>Did you do the Pre-work before Class?</p>
+        <input id="yesHomework" name="yesHomework" type="checkbox" />
+        <label for="yesHomework">Yes</label><br />
+        <br />
+        <button type="submit">Submit</button>
+        <p id="logicalOperators"></p>
+      </form>
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>
