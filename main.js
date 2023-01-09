@@ -13,37 +13,11 @@ const displayDate = () => {
 };
 
 // Write a JavaScript program to convert a number to a string.
-const numberToStringForm = document.getElementById("numberToString");
-numberToStringForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const numInput = document.getElementById("numSTGInput").value;
-  const numToString = String(numInput);
-  console.log(numToString);
-  document.getElementById(
-    "numToStringDisplay"
-  ).innerHTML = `${numInput} was converted into a String! Check the DOM.`;
-});
+const numToStr = (numInput) => String(numInput);
 
 // Write a JavaScript program to convert a string to the number.
-const stringToNumberForm = document.getElementById("stringToNumber");
-stringToNumberForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+const stringToNum = (stringInput) => Number(stringInput);
 
-  const stringInput = document.getElementById("stringNumInput").value;
-  const stringToNum = Number(stringInput);
-  console.log(stringToNum);
-  // must double check
-  if (stringToNum > 0) {
-    document.getElementById(
-      "stringtoNumDisplay"
-    ).innerHTML = `"${stringInput}" was converted into a Number! Check the DOM.`;
-  } else {
-    document.getElementById(
-      "stringtoNumDisplay"
-    ).innerHTML = `"${stringInput}" is not a number`;
-  }
-});
 // Write a JavaScript program that takes in different datatypes and prints out whether they are a:
 // * Boolean
 // * Null
@@ -51,35 +25,11 @@ stringToNumberForm.addEventListener("submit", (e) => {
 // * Number
 // * NaN
 // * String
-const dataTypesForm = document.getElementById("dataTypes");
-dataTypesForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const unknownDataType = document.getElementById("dataTypeInput").value;
-  let unknownDataType2 = Number(unknownDataType);
-  let unknownDataType3 = Boolean(unknownDataType);
-  let unknownDataType4 = null;
-  let unknownDataType5;
-  console.log(
-    typeof unknownDataType,
-    unknownDataType2,
-    unknownDataType3,
-    unknownDataType4,
-    unknownDataType5
-  );
-});
+const unknownData = (dataInput) => typeof dataInput;
 
 // Write a JavaScript program that adds 2 numbers together.
-const additionForm = document.getElementById("addition");
-additionForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+const sum = (numA, numB) => Number(numA) + Number(numB);
 
-  const numA = document.getElementById("numAInput").value;
-  const numB = document.getElementById("numBInput").value;
-  const sum = Number(numA) + Number(numB);
-  console.log(sum);
-  document.getElementById("sum").innerHTML = `${numA} + ${numB} = ${sum}`;
-});
 // Write a JavaScript program that runs only when 2 things are true.
 const bothAndValue = (valueA, valueB) => valueA && valueB;
 
@@ -106,6 +56,84 @@ const notValue = (valueA, valueB) => !valueA && !valueB;
 // Video2: https://www.youtube.com/embed/bkvH28PXLWc
 // Video3: https://www.youtube.com/embed/TrGI9Yki-24
 
+// Number To String Part 2:
+const numberToStringForm = document.getElementById("numberToString");
+numberToStringForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const userInput = document.getElementById("numSTGInput").value;
+  let numInput = Number(userInput);
+  console.log(numInput);
+  console.log(numToStr(numInput));
+  document.getElementById(
+    "numToStringDisplay"
+  ).innerHTML = `${numInput} was converted into a String! Check the DOM.`;
+});
+
+// String to Number Part 2:
+const stringToNumberForm = document.getElementById("stringToNumber");
+stringToNumberForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const stringInput = document.getElementById("stringNumInput").value;
+  console.log(stringInput);
+  console.log(stringToNum(stringInput));
+
+  if (isNaN(stringToNum(stringInput)) === false) {
+    document.getElementById(
+      "stringtoNumDisplay"
+    ).innerHTML = `"${stringInput}" was converted into a Number! Check the DOM.`;
+  } else {
+    document.getElementById(
+      "stringtoNumDisplay"
+    ).innerHTML = `"${stringInput}" is not a number`;
+  }
+});
+
+//Unknown Data Type Part 2:
+const dataTypesForm = document.getElementById("dataTypes");
+dataTypesForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const dataInput = document.getElementById("dataTypeInput").value;
+  console.log(unknownData(dataInput));
+  let unknownDataType1 = String(unknownData(dataInput));
+  let unknownDataType2 = Number(dataInput);
+  let unknownDataType3 = Boolean(unknownData(dataInput));
+  let unknownDataType4 = null;
+  let unknownDataType5;
+
+  console.log(
+    unknownDataType1,
+    unknownDataType2,
+    unknownDataType3,
+    unknownDataType4,
+    unknownDataType5
+  );
+  document.getElementById(
+    "dataTypeDisplay"
+  ).innerHTML = `The Input: ${dataInput} is a ${unknownData(dataInput)}`;
+});
+
+// Add 2 Numbers Part 2:
+const additionForm = document.getElementById("addition");
+additionForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let numA = document.getElementById("numAInput").value;
+  let numB = document.getElementById("numBInput").value;
+
+  numA = Number(numA);
+  numB = Number(numB);
+  console.log(numA, numB);
+
+  const totalSum = sum(numA, numB);
+  console.log(totalSum);
+
+  document.getElementById("sum").innerHTML = `${numA} + ${numB} = ${totalSum}`;
+});
+
+// Logical Operators Part 2:
 const logicalOperatorForm = document.getElementById("trueOrFalseValue");
 logicalOperatorForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -114,17 +142,17 @@ logicalOperatorForm.addEventListener("submit", (e) => {
   let valueB = document.querySelector("#yesHomework").checked;
   console.log(valueA, valueB);
 
-  if (valueA && valueB === true) {
+  if (bothAndValue(valueA, valueB)) {
     document.getElementById(
       "logicalOperators"
     ).innerHTML = `You are ready for JS211!`;
     console.log(`You are ready for JS211!`);
-  } else if (valueA || valueB === true) {
+  } else if (orValue(valueA, valueB)) {
     document.getElementById(
       "logicalOperators"
     ).innerHTML = `You Can Do it! You Need To Study Though!`;
     console.log(`You Can Do it! You Need To Study Though!`);
-  } else if (!valueA && !valueB) {
+  } else if (notValue(valueA, valueB)) {
     document.getElementById(
       "logicalOperators"
     ).innerHTML = `You Need To Really Study! Don't Give Up!`;
